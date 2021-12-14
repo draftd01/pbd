@@ -1,0 +1,3 @@
+create table covid(earliest_case_dt DATE, report_dt DATE, pos_spec_dt DATE, onset_dt DATE, current_status STRING, sex STRING, age_group STRING, race_ethnic STRING, hosp_yn STRING, icu_yn STRING, death_yn STRING, medcond_yn STRING);
+load data inpath 'hdfs://horton.hpc.nyu.edu:8020/user/draftd01/project/clean_data_c/part-r-00000' overwrite into table covid;
+create table covid_nonulls as select * from covid where earliest_case_dt is not null;
